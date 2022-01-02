@@ -1,3 +1,39 @@
+<?php
+    $data = [
+        [
+            'divTitle' => 'mt-2',
+            'title' => 'My Tasks',
+            'mark' => '130 / 500',
+            'divProgress' => 'mb-3',
+            'bgProgress' => 'fusion-400',
+            'valueProgress' => 65,
+        ],
+        [
+            'divTitle' => '',
+            'title' => 'Transfered',
+            'mark' => '440 TB',
+            'divProgress' => 'mb-3',
+            'bgProgress' => 'success-500',
+            'valueProgress' => 34,
+        ],
+        [
+            'divTitle' => '',
+            'title' => 'Bugs Squashed',
+            'mark' => '77%',
+            'divProgress' => 'mb-3',
+            'bgProgress' => 'info-400',
+            'valueProgress' => 77,
+        ],
+        [
+            'divTitle' => '',
+            'title' => 'User Testing',
+            'mark' => '7 days',
+            'divProgress' => 'mb-g',
+            'bgProgress' => 'primary-300',
+            'valueProgress' => 84,
+        ],
+    ];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,34 +68,15 @@
                     </div>
                     <div class="panel-container show">
                         <div class="panel-content">
-                            <div class="d-flex mt-2">
-                                My Tasks
-                                <span class="d-inline-block ml-auto">130 / 500</span>
+                            <?php foreach ($data as $item) {?>
+                            <div class="d-flex <?=$item['divTitle'];?>">
+                                <?=$item['title'];?>
+                                <span class="d-inline-block ml-auto"><?=$item['mark'];?></span>
                             </div>
-                            <div class="progress progress-sm mb-3">
-                                <div class="progress-bar bg-fusion-400" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress progress-sm <?=$item['divProgress'];?>">
+                                <div class="progress-bar bg-<?=$item['bgProgress'];?>" role="progressbar" style="width: <?=$item['valueProgress'];?>%;" aria-valuenow="<?=$item['valueProgress'];?>" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
-                            <div class="d-flex">
-                                Transfered
-                                <span class="d-inline-block ml-auto">440 TB</span>
-                            </div>
-                            <div class="progress progress-sm mb-3">
-                                <div class="progress-bar bg-success-500" role="progressbar" style="width: 34%;" aria-valuenow="34" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <div class="d-flex">
-                                Bugs Squashed
-                                <span class="d-inline-block ml-auto">77%</span>
-                            </div>
-                            <div class="progress progress-sm mb-3">
-                                <div class="progress-bar bg-info-400" role="progressbar" style="width: 77%;" aria-valuenow="77" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <div class="d-flex">
-                                User Testing
-                                <span class="d-inline-block ml-auto">7 days</span>
-                            </div>
-                            <div class="progress progress-sm mb-g">
-                                <div class="progress-bar bg-primary-300" role="progressbar" style="width: 84%;" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
+                            <?php }?>
                         </div>
                     </div>
                 </div>
