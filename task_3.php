@@ -1,3 +1,7 @@
+<?php
+    $data = ['Главная', 'PHP', 'Функции'];
+    $lastItem = array_pop($data);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,9 +37,10 @@
                     <div class="panel-container show">
                         <div class="panel-content">
                             <ol class="breadcrumb page-breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Главная</a></li>
-                                <li class="breadcrumb-item"><a href="#">PHP</a></li>
-                                <li class="breadcrumb-item active">Функции</li>
+                            <?php foreach ($data as $item) {?>
+                                <li class="breadcrumb-item"><a href="#"><?=$item;?></a></li>
+                            <?php }?>
+                                <li class="breadcrumb-item active"><?=$lastItem;?></li>
                             </ol>
                         </div>
                     </div>
