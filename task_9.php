@@ -1,3 +1,23 @@
+<?php
+    $host = '127.0.0.1';
+    $db   = 'task_9';
+    $user = 'root';
+    $pass = 'root';
+    $charset = 'utf8';
+
+    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+    $opt = [
+        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES   => false,
+    ];
+    $pdo = new PDO($dsn, $user, $pass, $opt);
+
+    if (isset($_POST['text'])) {
+        $statement = $pdo->prepare("INSERT INTO test (text) VALUES (:text)");
+        $statement->execute(['text' => $_POST['text']]);
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,9 +55,9 @@
                         <div class="panel-content">
                             <div class="panel-content">
                                 <div class="form-group">
-                                    <form action="">
+                                    <form action="" method="POST">
                                         <label class="form-label" for="simpleinput">Text</label>
-                                        <input type="text" id="simpleinput" class="form-control">
+                                        <input type="text" name="text" id="simpleinput" class="form-control">
                                         <button class="btn btn-success mt-3">Submit</button>
                                     </form>
                                 </div>
