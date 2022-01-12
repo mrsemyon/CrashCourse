@@ -16,7 +16,6 @@
 
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $_SESSION['email'] = $email;
 
     $host = '127.0.0.1';
     $db   = 'task_11';
@@ -37,6 +36,7 @@
     if (! empty($data)) {
         if (checkPassword($pdo, $password, $data['password'])) {
             $_SESSION['alert']['success'] = true;
+            $_SESSION['email'] = $email;
             header("Location: /task_14.php");
             exit;
         }
