@@ -37,9 +37,13 @@ session_start();
                         <div class="panel-content">
                             <div class="panel-content">
                                 <div class="form-group">
-                                    <?php if ($_SESSION['alert']) { ?>
+                                    <?php if ($_SESSION['alert']['danger']) { ?>
                                     <div class="alert alert-danger fade show" role="alert">
                                         Неверный логин или пароль
+                                    </div>
+                                    <?php } elseif ($_SESSION['alert']['success']) { ?>
+                                    <div class="alert alert-success fade show" role="alert">
+                                        Пользователь успешно авторизован
                                     </div>
                                     <?php } unset($_SESSION['alert']); ?>
                                     <form action="task_14_handler.php" method="POST">

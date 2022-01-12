@@ -36,13 +36,13 @@
 
     if (! empty($data)) {
         if (checkPassword($pdo, $password, $data['password'])) {
-            $_SESSION['alert'] = false;
+            $_SESSION['alert']['success'] = true;
             header("Location: /task_14.php");
             exit;
         }
     }
 
-    $_SESSION['alert'] = true;
+    $_SESSION['alert']['danger'] = true;
 
     header("Location: /task_14.php");
 ?>
