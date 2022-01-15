@@ -1,7 +1,3 @@
-<?php
-include $_SERVER['DOCUMENT_ROOT'] . '/core.php';
-$arImages = loadImage();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,9 +64,9 @@ $arImages = loadImage();
                             <div class="panel-content">
                                 <div class="panel-content image-gallery">
                                     <div class="row">
-                                        <?php foreach ($arImages as $image) { ?>                            
+                                        <?php foreach (glob(__DIR__ . '/upload/*.*') as $file) { ?>                                
                                             <div class="col-md-3 image">
-                                                <img style="width : 100px;" src="/upload/<?=$image['image']?>">
+                                                <img style="width : 100px;" src="/upload/<?=pathinfo($file, PATHINFO_BASENAME)?>">
                                             </div>
                                         <?php } ?>
                                     </div>
