@@ -68,13 +68,18 @@ $arImages = loadImage();
                             <div class="panel-content">
                                 <div class="panel-content image-gallery">
                                     <div class="row">
-                                        <?php foreach ($arImages as $image) { ?>                            
-                                            <div class="col-md-3 image">
-                                                <img style="width : 100px;" src="/upload/<?=$image['image']?>">
-                                                <a class="btn btn-danger" onclick="confirm('Вы уверены?');" href="/task_17.php">Удалить
-                                                <?php //deleteImage($image['image']); ?>
-                                                <?php //unlink('/upload/' . $image['image']); ?>
-                                                </a>
+                                        <?php if (! empty($arImages)) {
+                                            foreach ($arImages as $image) { ?>                            
+                                                <div class="col-md-3 image">
+                                                    <img style="width : 100px;" src="/upload/<?=$image['image']?>">
+                                                    <a class="btn btn-danger" onclick="confirm('Вы уверены?');" href="/task_17_handler.php?del=<?=$image['image']?>">
+                                                        Удалить
+                                                    </a>
+                                                </div>
+                                            <?php }
+                                        } else { ?>
+                                            <div class="alert alert-danger fade show">
+                                                Нет доступных для загрузки картинок
                                             </div>
                                         <?php } ?>
                                     </div>
@@ -84,11 +89,7 @@ $arImages = loadImage();
                     </div>
                 </div>
             </div>
-
-
         </main>
-        
-
         <script src="js/vendors.bundle.js"></script>
         <script src="js/app.bundle.js"></script>
         <script>
