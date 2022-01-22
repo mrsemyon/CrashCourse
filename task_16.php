@@ -1,5 +1,6 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/core.php';
+if (! is_dir('upload')) mkdir('upload');
 $arImages = loadImage();
 ?>
 <!DOCTYPE html>
@@ -68,11 +69,15 @@ $arImages = loadImage();
                             <div class="panel-content">
                                 <div class="panel-content image-gallery">
                                     <div class="row">
-                                        <?php foreach ($arImages as $image) { ?>                            
-                                            <div class="col-md-3 image">
-                                                <img style="width : 100px;" src="/upload/<?=$image['image']?>">
-                                            </div>
-                                        <?php } ?>
+                                        <?php if (! empty($arImages)) {
+                                            foreach ($arImages as $image) {
+                                                if (file_exists($_SERVER['DOCUMENT_ROOT'] . '/upload/' . $image['image'])) { ?>
+                                                    <div class="col-md-3 image">
+                                                        <img style="width : 100px;" src="/upload/<?=$image['image']?>">
+                                                    </div>
+                                                <?php }
+                                            }
+                                        } ?>
                                     </div>
                                 </div>
                             </div>
